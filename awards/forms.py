@@ -11,3 +11,9 @@ class UploadForm(forms.ModelForm):
     class Meta:
         model = Projects
         fields = ('project_name','project_photo','description','url','owner')
+
+
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['followers','following','user']

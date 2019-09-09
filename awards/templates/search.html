@@ -1,0 +1,25 @@
+{%extends 'base.html'%} 
+{% block content %}
+{{ block.super}}
+        <div class="w3-row-padding w3-content"> 
+        {% if result %}
+        <p> Found this result: </p> 
+        {% for i in result%}
+     
+        <div class="w3-col s4">
+            <p><img class="post-search"  src="{{i.project_photo.url}}" class="w3-img" alt="Image" style="width:100%">
+            <strong>{{i.project_name}}</strong></p>
+        </div>
+    
+        
+       
+        {% endfor%}
+        </a>
+        <hr>
+     
+        
+        {% else %}
+    <p> Did not find a project matching the name </p>
+        {% endif %}
+    </div>   
+{% endblock %}

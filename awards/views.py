@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import logout
 from django.contrib.auth.decorators import login_required
 from .forms import *
+from .models import *
 from django.http import Http404
 
 # Create your views here.
@@ -20,14 +21,17 @@ def register(request):
 @login_required(login_url='/accounts/login')
 def home(request):
     current_user = request.user
-    all_projects = Projects.objects.all()
-    return render(request, 'index.html', locals())
+    projects = Projects.objects.all()
+    profile = Profile.objects.all()
+    image = Image.objects.all()
+    return render(request, 'index.html',locals())
 
 
 @login_required(login_url='/accounts/login')
 def project(request, project_id):
     try:
-        project = Projects.objects.get(id=project_id)
+        this_project = Projects.objects.get(id=project_id)
+        print(this_project)
     except Projects.DoesNotExist:
         raise Http404()
     return render(request, "project.html", locals())
@@ -37,12 +41,12 @@ def project(request, project_id):
 def profile(request):
     current_user = request.user
     if request.method == 'POST':
-        form = UploadForm(request.POST, request.FILES)
+        form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('profile')
     else:
-        form = UploadForm()
+        form = ProfileForm()
         my_projects = Projects.objects.filter(owner=current_user)
         my_profile = Profile.objects.get(user_id=current_user)
     return render(request, 'profile.html', locals())
@@ -62,26 +66,29 @@ def upload_form(request):
         form = UploadForm()
     return render(request, 'post.html', {'uploadform': form})
 
-@login_required(login_url='/accounts/login')
-def edit_prof(request):
+@login_required(login_url='/accounts/login/')
+def edit_prof(request,id):
+    
     current_user = request.user
+    user = User.objects.get(id=id)
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
+        form = UpdateProfileForm(request.POST,request.FILES)
         if form.is_valid():
-            lol = form.save(commit=False)
-            lol.uploaded_by = current_user
-            lol.save()
-            return redirect('profile')
+            profile = form.save(commit=False)
+            profile.user_id=id
+            profile.save()
+            return redirect(home)
     else:
-        form = ProfileForm()
-    return render(request, 'profile_edit.html', {'profileform': form})
+        form = UpdateProfileForm()
+        return render(request,'profile_edit.html',{'user':user,'form':form})
 
 
 @login_required(login_url='/accounts/login')
 def search(request):
-    all_projects = Projects.objects.all()
+    projects = Projects.objects.all()
     parameter = request.GET.get("project")
     result = Projects.objects.filter(project_name__icontains=parameter)
+    print(result)
     return render(request, 'search.html', locals())
 
 

@@ -1,0 +1,29 @@
+{% extends 'registration/base.html'%}
+{%load bootstrap3%}
+{% load crispy_forms_tags %}
+{% block content %}
+{{block.super}}
+
+<div class="w3-container w3-theme-l5">
+<div class="w3-row">
+    <div class="w3-col m6 w3-display-middle " >
+    <div class="panel panel-default w3-card w3-round-4">
+        <div class="panel-heading w3-theme-d5">
+        <h3 class="w3-center">Post a Project</h3>
+        </div>
+        <div class="panel-body ">
+        <form  method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {%bootstrap_form uploadform%}
+            <div class="form-group w3-center">
+            <input type="submit" class=" w3-center w3-margin w3-button w3-theme-d5" value="Post">
+            </div>
+            <input type="hidden" name="next" value="{{next}}">
+        </form>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+{{form.media}}
+{%endblock%}

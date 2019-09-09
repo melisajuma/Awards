@@ -42,3 +42,8 @@ class Projects(models.Model):
 
     def __str__(self):
         return self.url
+
+    @classmethod
+    def print_all(cls):
+        project = Projects.objects.all().order_by('-id')
+        return project
