@@ -62,3 +62,18 @@ def upload_form(request):
         form = UploadForm()
     return render(request, 'post.html', {'uploadform': form})
 
+@login_required(login_url='/accounts/login')
+def edit_prof(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            lol = form.save(commit=False)
+            lol.uploaded_by = current_user
+            lol.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm()
+    return render(request, 'profile_edit.html', {'profileform': form})
+
+
