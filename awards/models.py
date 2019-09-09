@@ -10,10 +10,10 @@ class Profile(models.Model):
     user_id = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-    return self.bio
+        return self.bio
 
     def save_user(self):
-    self.save()
+        self.save()
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -35,7 +35,7 @@ class Image(models.Model):
 class Projects(models.Model):
     project_name = models.CharField(max_length=50, blank=True)
     project_photo = models.ImageField(upload_to='projectpics/')
-        description = models.TextField(max_length=600, blank=True)
+    description = models.TextField(max_length=600, blank=True)
     github_repo = models.CharField(max_length=200, blank=True)
     url = models.CharField(max_length=50, blank=True)
     owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
