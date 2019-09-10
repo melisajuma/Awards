@@ -5,7 +5,7 @@ config==0.4.0
 confusable-homoglyphs==3.2.0
 defusedxml==0.5.0
 dj-database-url==0.5.0
-Django==1.11
+Django==1.11.24
 django-bootstrap3==11.0.0
 django-braces==1.13.0
 django-crispy-forms==1.7.2
@@ -16,8 +16,7 @@ django-ratings==0.3.7
 django-registration==2.4.1
 django-star-ratings==0.7.0
 django-stubs==1.0.2
-djangorestframework==3.9.2
-djangorestframework-stubs==0.3.0
+djangorestframework==3.10.3
 gunicorn==19.9.0
 idna==2.8
 mypy==0.720
@@ -38,6 +37,7 @@ requests==2.21.0
 requests-oauthlib==1.2.0
 six==1.12.0
 social-auth-core==3.1.0
+sqlparse==0.3.0
 swapper==1.1.0
 typed-ast==1.4.0
 typing-extensions==3.7.4
