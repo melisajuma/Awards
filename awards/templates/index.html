@@ -57,7 +57,6 @@
         <div class="w3-row-padding">
             <h4 class="w3-center">All Projects</h4>
             <div class="w3-center"><a class="w3-button w3-round w3-green" href="{%url 'post'%}"><b>+ </b>Add a Project</a>
-            <div class="w3-center"><a class="w3-button w3-round w3-green" href="{%url 'post'%}"><b>+ </b>Rate</a>
             {% for project in projects %}
             <div class="w3-third w3-container w3-margin-bottom ">
                 <div class="row">
@@ -71,6 +70,7 @@
                     </div>
                 </div>
             </div>
+            <div class="w3-center"><a class="w3-button w3-round w3-green" href="{%url 'post'%}"><b>+ </b>Rate</a></div>
             {%endfor%}
 
             <!-- End page content -->
