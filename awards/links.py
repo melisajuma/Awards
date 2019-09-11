@@ -8,7 +8,7 @@ urlpatterns=[
     url(r'^$', views.register, name='register'),
     url(r'accounts/', include('django.contrib.auth.urls')),
     url(r'^home/$',views.home, name='home'),
-    url(r'^project/(?P<project_id>[0-9])$',views.project,name ='project'),
+    url(r'^project/$',views.project,name ='project'),
     url(r'profile/',views.profile, name='profile'),
     url(r'^post/', views.upload_form, name='post'),
     url(r'^profile/update/(\d+)$',views.edit_prof,name='update_profile'),

@@ -67,7 +67,7 @@ def upload_form(request):
     return render(request, 'post.html', {'uploadform': form})
 
 @login_required(login_url='/accounts/login/')
-def edit_prof(request,id):
+def edit_prof(request):
     
     current_user = request.user
     user = User.objects.get(id=id)
@@ -75,12 +75,14 @@ def edit_prof(request,id):
         form = UpdateProfileForm(request.POST,request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
-            profile.user_id=id
+            profile.user_id=current_user
             profile.save()
             return redirect(home)
     else:
         form = UpdateProfileForm()
         return render(request,'profile_edit.html',{'user':user,'form':form})
+
+
 
 
 @login_required(login_url='/accounts/login')

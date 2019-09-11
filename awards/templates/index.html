@@ -57,12 +57,11 @@
         <div class="w3-row-padding">
             <h4 class="w3-center">All Projects</h4>
             <div class="col-6-md""w3-center"><a class="w3-button w3-round w3-green" href="{%url 'post'%}"><b>+ </b>Add a Project</a>
-            <div class="col-6-md""w3-centerleft"><a class="w3-button w3-round w3-green" href="{%url 'post'%}"><b>+ </b>Rate projects</a>
-
+            <h4 class="w3-center">View and Rate Projects</h4>
             {% for project in projects %}
             <div class="w3-third w3-container w3-margin-bottom ">
                 <div class="row">
-                    <a href="{%url 'project' project_id=project.id%}"><img src="{{project.project_photo.url}}"
+                    <a href="{%url 'project'}"><img src="{{project.project_photo.url}}"
                             alt="project_photo" style="width:100%" class="w3-hover-opacity"
                             title="Click to view more details"></a>
                     <div class="w3-container w3-white w3-card">
