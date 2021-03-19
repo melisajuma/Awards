@@ -16,7 +16,7 @@ django-ratings==0.3.7
 django-registration==2.4.1
 django-star-ratings==0.7.0
 django-stubs==1.0.2
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 gunicorn==19.9.0
 idna==2.8
 mypy==0.720
