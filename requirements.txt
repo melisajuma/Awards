@@ -13,7 +13,7 @@ django-filter==2.1.0
 django-heroku==0.3.1
 django-model-utils==3.1.2
 django-ratings==0.3.7
-django-registration==2.4.1
+django-registration==3.1.2
 django-star-ratings==0.7.0
 django-stubs==1.0.2
 djangorestframework==3.10.3
